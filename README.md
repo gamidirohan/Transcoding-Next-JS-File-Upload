@@ -107,6 +107,3 @@ The video-list page shows available transcoded videos that can be streamed direc
 
 This project is open-source and available under the MIT License.
 ```
-
-### Action Required:
-You can copy this content and replace the existing `README.md` file in your project. Let me know if you need any further modifications!
