@@ -1,6 +1,3 @@
-Here’s the updated `README.md` file with all the details you provided:
-
-```markdown
 # Transcoding Project
 
 This project is a video transcoding web application built with Next.js (frontend) and Express (backend). It allows users to upload video files, select output resolutions, and initiate transcoding with ffmpeg. Users can monitor the progress and view a list of transcoded videos.
