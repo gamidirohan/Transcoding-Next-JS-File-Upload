@@ -44,25 +44,26 @@ app.post('/upload', upload, (req, res) => {
   };
 
   req.files.forEach((file) => {
-    // Loop through only selected formats
     formats.forEach((format) => {
       if (resolutions[format]) {
         const outputDir = path.join(__dirname, 'outputs');
         fs.mkdirSync(outputDir, { recursive: true });
-
+  
         const outputFileName = `${path.basename(file.originalname, path.extname(file.originalname))}_${format}.mp4`;
         const outputPath = path.join(outputDir, outputFileName);
-
-        // Start transcoding with specified resolution
+  
         ffmpeg(file.path)
           .videoCodec('libx264')
           .size(resolutions[format])
           .outputOptions(['-preset', 'fast', '-crf', '23'])
           .on('progress', (progress) => {
+            // Update progress
             transcodeProgress = Math.round(progress.percent);
           })
           .on('end', () => {
             console.log(`Transcoding to ${format} completed for ${file.originalname}`);
+            // Ensure progress is set to 100% after completion
+            transcodeProgress = 100;
           })
           .on('error', (err) => {
             console.error(`Error transcoding ${file.originalname}:`, err);
@@ -73,6 +74,7 @@ app.post('/upload', upload, (req, res) => {
       }
     });
   });
+  
 
   res.json({ message: 'Transcoding started.' });
 });
