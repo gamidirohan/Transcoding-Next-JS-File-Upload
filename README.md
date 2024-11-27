@@ -50,6 +50,7 @@ transcoding-project/
    Navigate to `transcoding-app` and install dependencies:
 
    ```bash
+   npm install --legacy-peer-deps 
    cd transcoding-app
    npm install
    ```
@@ -57,6 +58,12 @@ transcoding-project/
    Run the development server:
 
    ```bash
+   npm install express
+>> npm install multer
+>> npm install cors
+>> npm install path
+>> npm install fs
+>> npm install ffmpeg
    npm run dev
    ```
 
